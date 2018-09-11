@@ -1,0 +1,18 @@
+{
+    "name": "mockapi",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "json-server": "^0.14.0",
+        "mockjs": "^1.0.1-beta3",
+        "nodemon": "^1.18.4"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "mock": "cd api/mock && nodemon server.js"
+    },
+    "author": "denzel <85044505@qq.com>",
+    "license": "ISC"
+}
