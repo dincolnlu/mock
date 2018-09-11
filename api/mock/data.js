@@ -66,7 +66,13 @@ module.exports = function() {
             "totalCount": 100,
             "datalist": []
         },
-        products: []
+        products: [],
+        
+        courseList:{
+            "totalPage": 10,
+            "totalCount": 100,
+            "datalist": []
+        },
     };
 
     let cover = ['/temp/cover1.jpg', '/temp/cover2.jpg', '/temp/cover3.jpg', '/temp/cover4.jpg', '/temp/cover5.jpg']
@@ -91,27 +97,27 @@ module.exports = function() {
         products.push(item)
     }
 
+    //模拟数据
+    var courseList = Mock.mock({
+        "datalist|1-20": [{
+            "id": "@id",
+            "title": "@ctitle(6)",
+            "subtitle": "@ctitle(20)",
+            "cover": "@image('200x200', '#894FC4', 'png', '@ctitle(1)')",
+            "status|1-2": 1,
+            "count|1-50": 10,
+        }]
+    });
+    console.log(courseList)
+    data.courseList.totalCount = courseList.datalist.length;
+    data.courseList.datalist = courseList.datalist;
+
     data.products = products;
     // data.productList.result.totalPage = Math.ceil(products.length/10);
     data.productList.totalCount = products.length;
     data.productList.datalist = products.slice(0,5);
 
+
+
     return data
 }
-
-// {
-//     "status": 1,
-//         "message": "",
-//             "errCode": "",
-//                 "result": {
-//         "totalPage": 46,
-//             "datalist|3-10": [{
-//                 "id": "@id",
-//                 "title": "@ctitle(6)",
-//                 "subtitle": "@ctitle(20)",
-//                 "cover": "@image('200x200', '#894FC4', '#FFF', 'png', '@ctitle(1)')",
-//                 "status|1-2": 1,
-//                 "count|1-50": 10,
-//             }]
-//     }
-// }
