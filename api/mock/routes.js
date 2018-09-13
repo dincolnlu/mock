@@ -38,9 +38,16 @@ module.exports = {
     "/product/details?id=:id": "/productList/:id", //商品详情
 
     //课程接口
-    "course/list": "/courseList" ,//课程列表
-    "course/mine":  "/courseList" ,//我的课程列表
-    "course/detail": "/courseDetail" ,//课程详情
-    "course/lesson": "/lessonList",//小课列表
-    "course/playinfo": "/playinfo" //获取音频地址
+    "/course/list?filter=course&page=:id": "/courseList",//课程列表
+    "/course/list?filter=music&page=:id": "/courseList",//课程列表
+    "/course/list": "/courseList" ,//课程列表
+    "/course/mini?limit=:id&page=:id": "/myCourseList",//我的课程列表
+    "/course/mine":  "/myCourseList" ,//我的课程列表
+    "/course/detail": "/courseDetail" ,//课程详情
+    "/course/detail?id=:id": "/courseDetail" ,//课程详情
+    "/course/lesson": "/lessonList",//小课列表
+    "/course/lesson?id=:id&limit=:id&page=:id&sort=orderAsc": "/lessonList",//小课列表正序
+    "/course/lesson?id=:id&limit=:id&page=:id&sort=orderDesc": "/lessonList",//小课列表倒序
+    "/course/playinfo": "/playinfo" //获取音频地址
+
 }

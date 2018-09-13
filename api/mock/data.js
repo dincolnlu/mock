@@ -68,11 +68,25 @@ module.exports = function() {
         },
         products: [],
         
+
+        //课程列表
         courseList:{
             "totalPage": 10,
-            "totalCount": 100,
+            "totalCount": 1,
             "datalist": []
         },
+        myCourseList: {
+            "totalPage": 10,
+            "totalCount": 1,
+            "datalist": []
+        },
+        courseDetail: [],
+        lessonList:{
+            "totalPage": 10,
+            "totalCount": 1,
+            "datalist": []
+        },
+        playinfo:[]
     };
 
     let cover = ['/temp/cover1.jpg', '/temp/cover2.jpg', '/temp/cover3.jpg', '/temp/cover4.jpg', '/temp/cover5.jpg']
@@ -97,10 +111,13 @@ module.exports = function() {
         products.push(item)
     }
 
-    //模拟数据
+
+    //模拟数据(课程)
+
+    //课程列表
     var courseList = Mock.mock({
-        "datalist|1-20": [{
-            "id": "@id",
+        "datalist|5": [{
+            "id|1-10": 5,
             "title": "@ctitle(6)",
             "subtitle": "@ctitle(20)",
             "cover": "@image('200x200', '#894FC4', 'png', '@ctitle(1)')",
@@ -108,9 +125,91 @@ module.exports = function() {
             "count|1-50": 10,
         }]
     });
-    console.log(courseList)
+    //console.log(courseList)
     data.courseList.totalCount = courseList.datalist.length;
     data.courseList.datalist = courseList.datalist;
+
+    //我的课程列表
+    var myCourseList = Mock.mock({
+        "datalist|1-20": [{
+            "id": "@id",
+            "title": "@ctitle(6)",
+            "subtitle": "@ctitle(20)",
+            "cover": "@image('200x200', '#894FC4', 'png', '@ctitle(1)')",
+            "status|1-2": 1,
+            "count|1-50": 10,
+            "historyPlay":{
+                "duration|1-300": 10,
+                "info": '@ctitle(6)',
+            }
+        }]
+    });
+    //console.log(courseList)
+    data.myCourseList.totalCount = myCourseList.datalist.length;
+    data.myCourseList.datalist = myCourseList.datalist;
+
+    //课程详情
+    const detail  = Mock.mock({
+        "title": "@ctitle(6)",
+        "cover": "@image('200x200')",  //封面 
+        "price|1-99999": 100 , //价格 
+        "status|1-2": 1,   //更新状态
+        "count|1-50": 10,  //更新至
+        "description":"@ctitle(100)" ,//课程介绍 
+        "isBought|1": "@boolean" ,  //是否已购买  
+        "isPlayable|1": "@boolean",   //播放
+        "historyPlay" :{
+            "id": "@id",  //播放ID 
+            "info": "@ctitle(6)",  //播放信息 
+            "duration|1-300": 10,//播放时长 
+        } ,//播放历史 
+        "audition":{
+            "id": "@id"  //试听ID 
+        }  //试听 
+
+    });
+
+    data.courseDetail = detail;
+
+   //小课列表
+    var lesson = Mock.mock({
+        "datalist|1-20": [{
+            "id": "@id",
+            "title": "@ctitle(6)",
+            "subtitle": "@ctitle(20)",
+            "isPlayable|1": "@boolean",
+            "duration|0-720":60,
+            "history|0-720": 60,
+            "updateTime": "@date",
+            "playCount|0-10": 5,
+        
+        }]
+    });
+
+
+
+    //console.log(courseList)
+    data.lessonList.totalCount = lesson.datalist.length;
+    data.lessonList.datalist = lesson.datalist;
+
+
+    //音频地址
+    const playinfo = Mock.mock({
+        "title": "@ctitle(6)",
+        "playUrl":"../../../static/mp3/timian.mp3",
+        "duration": '282',
+        "playCount|1-10":5
+    });
+    //console.log(courseList)
+    data.playinfo = playinfo;
+
+
+
+
+
+
+
+/*                                                                                            */
 
     data.products = products;
     // data.productList.result.totalPage = Math.ceil(products.length/10);
