@@ -156,7 +156,9 @@ module.exports = function() {
         "status|1-2": 1,   //更新状态
         "count|1-50": 10,  //更新至
         "description":"@ctitle(100)" ,//课程介绍 
-        "isBought|1": "@boolean" ,  //是否已购买  
+        //"isBought|1": "@boolean" ,  //是否已购买  
+        "isBought": true,  //是否已购买  
+        //"isBought": false,  //是否已购买  
         "isPlayable|1": "@boolean",   //播放
         "historyPlay" :{
             "id": "@id",  //播放ID 
@@ -196,7 +198,7 @@ module.exports = function() {
     //音频地址
     const playinfo = Mock.mock({
         "title": "@ctitle(6)",
-        "playUrl":"../../../static/mp3/timian.mp3",
+        "playUrl":"../../../static/mp3/waybackintolove.mp3",
         "duration": '282',
         "playCount|1-10":5
     });
