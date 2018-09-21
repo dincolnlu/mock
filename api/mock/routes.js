@@ -48,6 +48,12 @@ module.exports = {
     "/course/lesson": "/lessonList",//小课列表
     "/course/lesson?id=:id&limit=:id&page=:id&sort=orderAsc": "/lessonList",//小课列表正序
     "/course/lesson?id=:id&limit=:id&page=:id&sort=orderDesc": "/lessonList",//小课列表倒序
-    "/course/playinfo": "/playinfo" //获取音频地址
+    "/course/playinfo": "/playinfo", //获取音频地址
+    "/course/playinfo?id=:id": "/playinfo" ,//获取音频地址
+
+
+    //购物车
+    "/cart/list": "/cartList"//购物车列表
+
 
 }

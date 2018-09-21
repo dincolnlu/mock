@@ -86,7 +86,14 @@ module.exports = function() {
             "totalCount": 1,
             "datalist": []
         },
-        playinfo:[]
+        playinfo:[],
+
+        cartList:{
+            "totalPage": 10,
+            "totalCount": 1,
+            "datalist": []
+        }
+
     };
 
     let cover = ['/temp/cover1.jpg', '/temp/cover2.jpg', '/temp/cover3.jpg', '/temp/cover4.jpg', '/temp/cover5.jpg']
@@ -207,6 +214,23 @@ module.exports = function() {
 
 
 
+    //购物车列表
+    const cartList = Mock.mock({
+        "datalist|1-3": [{
+            "mainId": "@id",
+            "shopName": "@ctitle(6)",
+            "goodsList|1-5":[{
+                "id": "@id",
+                "title": "@ctitle(6)",
+                "sku|1": "@ctitle(20)",
+                "price|0-30000": 10000,
+                "quantity|1-10":9,
+                "cover": "@image('200x200', '#894FC4', 'png', '@ctitle(1)')",
+            }]
+        }]
+    })
+
+    data.cartList.datalist = cartList.datalist;
 
 
 
