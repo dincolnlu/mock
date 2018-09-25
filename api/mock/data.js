@@ -219,12 +219,14 @@ module.exports = function() {
         "datalist|1-3": [{
             "mainId": "@id",
             "shopName": "@ctitle(6)",
+            "shopselected": false,
             "goodsList|1-5":[{
                 "id": "@id",
                 "title": "@ctitle(6)",
                 "sku|1": "@ctitle(20)",
                 "price|0-30000": 10000,
                 "quantity|1-10":9,
+                "selected": false,
                 "cover": "@image('200x200', '#894FC4', 'png', '@ctitle(1)')",
             }]
         }]
