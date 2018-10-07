@@ -92,6 +92,11 @@ module.exports = function() {
             "totalPage": 10,
             "totalCount": 1,
             "datalist": []
+        },
+        payList:{
+            "totalPage": 10,
+            "totalCount": 1,
+            "datalist": []
         }
 
     };
@@ -117,6 +122,14 @@ module.exports = function() {
         });
         products.push(item)
     }
+
+    /*                                                                                            */
+
+    data.products = products;
+    // data.productList.result.totalPage = Math.ceil(products.length/10);
+    data.productList.totalCount = products.length;
+    data.productList.datalist = products.slice(0, 5);
+
 
 
     //模拟数据(课程)
@@ -216,11 +229,11 @@ module.exports = function() {
 
     //购物车列表
     const cartList = Mock.mock({
-        "datalist|1-3": [{
+        "datalist|2": [{
             "mainId": "@id",
             "shopName": "@ctitle(6)",
             "shopselected": false,
-            "goodsList|1-5":[{
+            "productList|2":[{
                 "id": "@id",
                 "title": "@ctitle(6)",
                 "sku|1": "@ctitle(20)",
@@ -234,16 +247,25 @@ module.exports = function() {
 
     data.cartList.datalist = cartList.datalist;
 
+    //支付列表
+    const confirmOrder = Mock.mock({
+        "datalist|2": [{
+            "mainId": "@id",
+            "shopName": "@ctitle(6)",
+            "shopselected": false,
+            "productList|2": [{
+                "id": "@id",
+                "title": "@ctitle(6)",
+                "sku|1": "@ctitle(20)",
+                "price|0-30000": 10000,
+                "quantity|1-10": 9,
+                "selected": false,
+                "cover": "@image('200x200', '#894FC4', 'png', '@ctitle(1)')",
+            }]
+        }]
+    })
 
-
-
-/*                                                                                            */
-
-    data.products = products;
-    // data.productList.result.totalPage = Math.ceil(products.length/10);
-    data.productList.totalCount = products.length;
-    data.productList.datalist = products.slice(0,5);
-
+    data.payList.datalist = confirmOrder.datalist;
 
 
     return data

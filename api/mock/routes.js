@@ -53,7 +53,8 @@ module.exports = {
 
 
     //购物车
-    "/cart/list": "/cartList"//购物车列表
+    "/cart/list": "/cartList",//购物车列表
+    "/confirmOrder/list": "/confirmOrder"//支付列表
 
 
 }
